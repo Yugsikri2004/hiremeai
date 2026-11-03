@@ -1,0 +1,120 @@
+.welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 48px 0 24px;
+  animation: fade-up 0.35s ease;
+}
+
+.welcome-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.welcome-logo {
+  margin-bottom: 18px;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px -8px rgba(109, 126, 245, 0.55); /* logo ke peeche halki glow */
+}
+.welcome h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.welcome-sub {
+  margin: 8px 0 0;
+  font-size: 17px;
+  color: var(--text);
+}
+.welcome-hint {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.intro-card {
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--surface) 0%, rgba(19, 24, 38, 0.6) 100%);
+}
+.intro-name {
+  font-weight: 600;
+}
+.intro-headline {
+  font-size: 13px;
+  color: var(--accent);
+}
+.intro-summary {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.suggestions-title {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-faint);
+}
+
+.suggestion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.suggestion-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: left;
+  font-size: 14px;
+  color: var(--text);
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+  animation: fade-up 0.35s ease both;
+}
+.suggestion-card:hover:not(:disabled) {
+  border-color: var(--accent-border);
+  background: var(--surface-2);
+  transform: translateY(-1px);
+}
+.suggestion-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+/* 7 cards hain -> last card poori line le, khaali jagah na dikhe */
+.suggestion-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 640px) {
+  .welcome {
+    padding-top: 28px;
+  }
+  .welcome h1 {
+    font-size: 24px;
+  }
+  .welcome-sub {
+    font-size: 15px;
+  }
+  .suggestion-grid {
+    grid-template-columns: 1fr;
+  }
+}

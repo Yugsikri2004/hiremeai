@@ -1,0 +1,79 @@
+{
+  "name": "Yug Sikri",
+  "email": "yugsikri10@gmail.com",
+  "phone": "+91 7082093028",
+  "total_exp_years": 1.5,
+  "skills": [
+    "Selenium WebDriver",
+    "C#",
+    "Playwright",
+    "TypeScript",
+    "NUnit",
+    "Page Object Model",
+    "AI-assisted automation",
+    "REST API Testing",
+    "Postman",
+    "Snowflake",
+    "SQL",
+    "Manual Testing",
+    "Test Case Design",
+    "Regression Testing",
+    "Sanity Testing",
+    "Defect Reporting",
+    "SDLC",
+    "STLC",
+    "Agile",
+    "Scrum",
+    "Java (basic)",
+    "C++ (basic)",
+    "JIRA",
+    "Git",
+    "Bitbucket",
+    "HTML",
+    "CSS"
+  ],
+  "experiences": [
+    {
+      "company": "73 Strings",
+      "role": "QA Automation Engineer",
+      "duration": "May 2026 – Aug 2026",
+      "description": "Expanded the modernized automation suite in Playwright with TypeScript, writing and migrating 400+ test cases spanning new feature flows and high-value regression scenarios from the legacy Selenium suite. Broadened coverage into REST API testing with Postman, validating 15+ endpoints alongside UI flows to catch integration defects earlier in the cycle. Performed data‑platform QA on Snowflake, validating 10+ data processes across environments to verify financial data pipeline outputs. Ran the full automated regression suite against every production deployment (5+ releases), analyzing failed runs to separate genuine defects from script issues. Reported and tracked 100+ defects in JIRA across the tenure, collaborating with developers across Agile sprint cycles for timely resolution.",
+      "skills_used": [
+        "Playwright",
+        "TypeScript",
+        "Postman",
+        "REST API Testing",
+        "Snowflake",
+        "SQL",
+        "JIRA",
+        "Agile",
+        "Selenium WebDriver"
+      ]
+    },
+    {
+      "company": "GoKloud Software Solutions (deputed at 73 Strings)",
+      "role": "QA Automation Intern",
+      "duration": "Apr 2025 – May 2026",
+      "description": "Automated 500+ UI regression test cases for a production fintech web application using Selenium WebDriver with C#, significantly reducing manual testing effort. Developed a bulk entity‑onboarding automation script processing 2,000+ entities in a single batch, cutting QA validation time by 60%. Built an automated value‑comparison script to validate data parity across platforms during a migration, reducing manual effort by 70%. Built reusable Page Object Model‑based scripts for core user workflows — login flows, form validations, navigation, and regression scenarios. Maintained and updated test cases against evolving business requirements and new feature releases. Adopted Playwright with TypeScript as the team modernized its suite, writing and executing scripts for new feature flows. Earned conversion to a full‑time role after a two‑round technical and behavioral evaluation.",
+      "skills_used": [
+        "Selenium WebDriver",
+        "C#",
+        "Page Object Model",
+        "Playwright",
+        "TypeScript",
+        "Automation scripting",
+        "JIRA"
+      ]
+    }
+  ],
+  "education": [
+    "B.E. — Computer Science Engineering (CGPA: 8.80), Chitkara University, Punjab, India, 2022 – 2026",
+    "Class XII (CBSE): 91.6%, Sahara Comprehensive School, Haryana, India, 2020 – 2022",
+    "Class X (CBSE): 94.8%, Sahara Comprehensive School, Haryana, India, 2020"
+  ],
+  "projects": [
+    "UI Test Automation Framework – Designed a Page Object Model‑structured framework with reusable validation scripts for forms, buttons, navigation, and user actions, automating 500+ repetitive regression cases; technologies used: Selenium WebDriver, C#, NUnit",
+    "UI Automation Suite Modernization – Automated 400+ test cases through modern automation scripts, achieving faster and more stable execution than the legacy Selenium suite while validating application behaviour across core user flows; technologies used: Playwright, TypeScript"
+  ],
+  "certifications": []
+}

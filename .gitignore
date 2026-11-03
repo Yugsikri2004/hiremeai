@@ -1,0 +1,32 @@
+# .gitignore = in files/folders ko Git ignore karega -> ye GitHub pe upload NAHI honge
+
+# Python-generated files
+# (Python khud banata hai jab code chalta hai, inko share karne ka koi fayda nahi)
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+# (har computer pe "uv sync" se dobara ban jaata hai, upload karna bekaar + bahut bada)
+.venv
+
+# 🔐 Secrets -> SABSE IMPORTANT
+# .env mein GROQ_API_KEY hai. GitHub pe gaya toh bots minutes mein chura lete hain
+# (deploy ke time key Render ke "Environment Variables" mein daalenge, file mein nahi)
+.env
+.env.*
+# .env.example allowed: isme koi secret nahi, bas batata hai kaunse variables chahiye
+!.env.example
+
+# Frontend (React) ke packages
+# (npm install se dobara ban jaata hai, hazaaron files hoti hain)
+node_modules/
+
+# Mac ki apni hidden file, har folder mein ban jaati hai
+.DS_Store
+
+# NOTE: backend/Yug.pdf ko jaan-bujh ke ignore NAHI kiya
+# -> HR ko resume dikhna chahiye, isliye ye GitHub pe jaayega (isme phone number bhi public hoga)

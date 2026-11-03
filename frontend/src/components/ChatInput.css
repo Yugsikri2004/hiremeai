@@ -1,0 +1,89 @@
+.chat-input-wrap {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 10px 24px 16px;
+}
+
+.chat-input {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px 10px 10px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+/* Typing karte waqt box ke around halki accent glow */
+.chat-input:focus-within {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow), 0 0 0 4px rgba(139, 155, 255, 0.08);
+}
+
+.chat-input textarea {
+  flex: 1;
+  resize: none;
+  max-height: 160px;
+  padding: 7px 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  line-height: 1.5;
+}
+.chat-input textarea::placeholder {
+  color: var(--text-faint);
+}
+
+.send-btn {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 11px;
+  background: var(--accent-strong);
+  color: #fff;
+  transition: background 0.15s, transform 0.1s;
+}
+.send-btn:hover:not(:disabled) {
+  background: #7b8bff;
+}
+.send-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+.send-btn:disabled {
+  background: var(--surface-2);
+  color: var(--text-faint);
+  opacity: 1;
+}
+.send-btn.stop {
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+}
+
+.input-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 4px 0;
+  font-size: 11.5px;
+  color: var(--text-faint);
+}
+.char-count {
+  flex-shrink: 0;
+  color: var(--warning);
+}
+
+@media (max-width: 640px) {
+  .chat-input-wrap {
+    padding: 8px 12px 12px;
+  }
+  .chat-input textarea {
+    font-size: 16px; /* iPhone pe 16px se kam ho toh type karte waqt page zoom ho jaata hai */
+  }
+}
