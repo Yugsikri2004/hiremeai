@@ -89,7 +89,7 @@ Project: automated value-comparison script for a data migration (GoKloud Softwar
 - Email: yugsikri10@gmail.com
 - Phone: +91 7082093028 (can be shared with recruiters)
 - LinkedIn: https://www.linkedin.com/in/yug-sikri09
-- GitHub: not shared yet (coming soon).
+- GitHub: https://github.com/Yugsikri2004 (code of this HiremeAI project: https://github.com/Yugsikri2004/hiremeai)
 - Portfolio: this HireMeAI chat website itself is his portfolio project.
 
 ## Why He Left 73 Strings
