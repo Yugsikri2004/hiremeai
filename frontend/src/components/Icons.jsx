@@ -94,6 +94,9 @@ export function AlertIcon(props) {
 export function ExternalIcon(props) {
   return <Svg {...props}><><path d="M14 4h6v6" /><path d="M20 4 11 13" /><path d="M19 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4" /></></Svg>;
 }
+export function TargetIcon(props) {
+  return <Svg {...props}><><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1" fill="currentColor" /></></Svg>;
+}
 export function GradIcon(props) {
   return <Svg {...props}><><path d="m2 9 10-5 10 5-10 5Z" /><path d="M6 11v5c3 2 9 2 12 0v-5" /></></Svg>;
 }

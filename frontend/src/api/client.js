@@ -69,5 +69,22 @@ export async function streamChat(messages, { onChunk, signal }) {
   }
 }
 
+// POST /match -> job description do, candidate ka fit milta hai (score + matching/learning/missing skills)
+export async function matchJob(jobDescription, signal) {
+  let res;
+  try {
+    res = await fetch(`${API_URL}/match`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ job_description: jobDescription }),
+      signal,
+    });
+  } catch (err) {
+    networkError(err);
+  }
+  if (!res.ok) throw new ApiError(await readError(res), res.status);
+  return res.json();
+}
+
 // Resume ke links: view = browser mein khulega, download = file save hogi
 export const resumeUrl = (download = false) => `${API_URL}/resume${download ? "?download=true" : ""}`;

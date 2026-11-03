@@ -1,0 +1,155 @@
+/* Backdrop + .modal ka base style ResumeModal.css se aata hai; yahan sirf JD popup ka extra */
+.jd-modal {
+  width: min(640px, 100%);
+  height: auto;
+  max-height: 90vh;
+}
+.jd-modal .modal-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.jd-body {
+  overflow-y: auto;
+  padding: 18px 20px 20px;
+}
+
+.jd-form,
+.jd-result {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.jd-hint {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.jd-input {
+  width: 100%;
+  min-height: 220px;
+  padding: 12px 14px;
+  resize: vertical;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.jd-input:focus {
+  outline: none;
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.jd-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.jd-count {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.jd-error {
+  padding: 10px 12px;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: var(--radius);
+  background: rgba(248, 113, 113, 0.07);
+  font-size: 13.5px;
+}
+
+/* Result */
+.jd-score-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.jd-score {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 92px;
+  height: 92px;
+  border: 3px solid currentColor;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+}
+.jd-score span {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.jd-score-good {
+  color: var(--success);
+}
+.jd-score-ok {
+  color: var(--warning);
+}
+.jd-score-low {
+  color: var(--danger);
+}
+.jd-verdict {
+  font-size: 18px;
+  font-weight: 600;
+}
+.jd-summary {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.jd-group-title {
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-faint);
+}
+.jd-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.jd-chip {
+  padding: 4px 10px;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 13px;
+}
+.jd-chip-good {
+  border-color: rgba(52, 211, 153, 0.35);
+  color: var(--success);
+}
+.jd-chip-ok {
+  border-color: rgba(251, 191, 36, 0.35);
+  color: var(--warning);
+}
+.jd-chip-low {
+  border-color: rgba(248, 113, 113, 0.35);
+  color: var(--danger);
+}
+.jd-disclaimer {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+@media (max-width: 640px) {
+  .jd-modal {
+    height: 100dvh;
+    max-height: none;
+  }
+  .jd-score {
+    width: 76px;
+    height: 76px;
+    font-size: 24px;
+  }
+}

@@ -1,5 +1,5 @@
 import Avatar from "./Avatar";
-import { DownloadIcon, EyeIcon, LogoMark, PlusIcon } from "./Icons";
+import { DownloadIcon, EyeIcon, LogoMark, PlusIcon, TargetIcon } from "./Icons";
 import { resumeUrl } from "../api/client";
 import "./ChatHeader.css";
 
@@ -10,7 +10,7 @@ const STATUS = {
   offline: { label: "Offline", className: "status-offline" },
 };
 
-export default function ChatHeader({ profile, status, onOpenProfile, onViewResume, onNewChat, canReset }) {
+export default function ChatHeader({ profile, status, onOpenProfile, onViewResume, onMatchJob, onNewChat, canReset }) {
   const s = STATUS[status];
   return (
     <header className="chat-header">
@@ -32,11 +32,15 @@ export default function ChatHeader({ profile, status, onOpenProfile, onViewResum
           <span className="status-dot" />
           <span className="status-label">{s.label}</span>
         </span>
+        {/* Mobile pe sirf icon dikhta hai (btn-label chhup jaata hai), isliye aria-label */}
+        <button className="btn compact-md" onClick={onMatchJob} disabled={status !== "online"} aria-label="Match a job description" title="Match a job description">
+          <TargetIcon size={16} /> <span className="btn-label">Match JD</span>
+        </button>
         <button className="btn hide-sm" onClick={onViewResume} disabled={status !== "online"}>
           <EyeIcon size={16} /> <span className="btn-label">View Resume</span>
         </button>
         <a
-          className={`btn hide-sm ${status !== "online" ? "is-disabled" : ""}`}
+          className={`btn hide-sm compact-md ${status !== "online" ? "is-disabled" : ""}`}
           href={resumeUrl(true)}
           download
           aria-label="Download resume"

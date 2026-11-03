@@ -104,6 +104,34 @@
   grid-column: 1 / -1;
 }
 
+/* JD Matcher button (welcome pe) */
+.jd-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  text-align: left;
+  color: var(--text);
+  transition: background 0.15s, transform 0.15s;
+}
+.jd-cta:hover:not(:disabled) {
+  background: rgba(139, 155, 255, 0.18);
+  transform: translateY(-1px);
+}
+.jd-cta-title {
+  display: block;
+  font-weight: 600;
+  font-size: 14.5px;
+}
+.jd-cta-sub {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
 @media (max-width: 640px) {
   .welcome {
     padding-top: 28px;

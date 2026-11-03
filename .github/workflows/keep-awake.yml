@@ -1,0 +1,20 @@
+# Render ka free server 15 min koi request na aaye toh so jaata hai -> HR ka pehla sawaal ~50 sec leta hai.
+# Ye workflow har 10 min backend ko ek halki si request bhejta hai, taaki wo jaagta rahe.
+# Free hai: public repo pe GitHub Actions free hain. Render free = 750 hours/month, ek service 24x7 (~744 hrs) mein fit.
+# Note: GitHub cron kabhi kabhi kuch minute late chalta hai, aur repo pe 60 din koi commit na ho toh ye apne aap band ho jaata hai.
+
+name: Keep backend awake
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # har 10 minute (UTC)
+  workflow_dispatch:          # Actions tab se haath se bhi chala sakte ho
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Ping backend
+        # "/" pe LLM call nahi hoti -> Groq ka quota kharch nahi hota
+        run: curl -fsS --max-time 90 --retry 2 https://hiremeai-backend-zyf5.onrender.com/

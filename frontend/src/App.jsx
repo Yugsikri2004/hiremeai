@@ -5,6 +5,7 @@ import WelcomeScreen from "./components/WelcomeScreen";
 import MessageList from "./components/MessageList";
 import ChatInput from "./components/ChatInput";
 import ResumeModal from "./components/ResumeModal";
+import JdMatchModal from "./components/JdMatchModal";
 import { useProfile } from "./hooks/useProfile";
 import { useChat } from "./hooks/useChat";
 import "./App.css";
@@ -16,8 +17,14 @@ export default function App() {
   const chat = useChat();
   const [sidebarOpen, setSidebarOpen] = useState(false); // sirf mobile drawer ke liye
   const [resumeOpen, setResumeOpen] = useState(false);
+  const [jdOpen, setJdOpen] = useState(false); // JD Matcher popup
 
   const closeResume = useCallback(() => setResumeOpen(false), []);
+  const closeJd = useCallback(() => setJdOpen(false), []);
+  const openJd = () => {
+    setSidebarOpen(false);
+    setJdOpen(true);
+  };
   const openResume = () => {
     setSidebarOpen(false);
     setResumeOpen(true);
@@ -51,6 +58,7 @@ export default function App() {
           status={status}
           onOpenProfile={() => setSidebarOpen(true)}
           onViewResume={openResume}
+          onMatchJob={openJd}
           onNewChat={chat.reset}
           canReset={!isEmpty}
         />
@@ -64,7 +72,7 @@ export default function App() {
         {isEmpty ? (
           <div className="message-scroll">
             <div className="message-list">
-              <WelcomeScreen profile={profile} onAsk={ask} disabled={chat.isStreaming} />
+              <WelcomeScreen profile={profile} onAsk={ask} onMatchJob={openJd} disabled={chat.isStreaming} online={status === "online"} />
             </div>
           </div>
         ) : (
@@ -87,6 +95,7 @@ export default function App() {
       </main>
 
       <ResumeModal open={resumeOpen} onClose={closeResume} />
+      <JdMatchModal open={jdOpen} onClose={closeJd} candidateName={profile?.name} />
     </div>
   );
 }

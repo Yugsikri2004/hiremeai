@@ -1,10 +1,10 @@
 import Avatar from "./Avatar";
-import { LogoMark } from "./Icons";
+import { LogoMark, TargetIcon } from "./Icons";
 import { SUGGESTIONS } from "../data/questions";
 import "./WelcomeScreen.css";
 
 // Khaali chat pe dikhta hai: welcome + candidate ka intro + suggestion cards
-export default function WelcomeScreen({ profile, onAsk, disabled }) {
+export default function WelcomeScreen({ profile, onAsk, onMatchJob, disabled, online }) {
   const firstName = profile?.name?.split(" ")[0];
   const owner = firstName ? `${firstName}'s` : "the candidate's";
 
@@ -30,6 +30,17 @@ export default function WelcomeScreen({ profile, onAsk, disabled }) {
           </div>
         </div>
       )}
+
+      {/* JD Matcher ka bada button: HR ke liye sabse kaam ka feature, isliye welcome pe hi */}
+      <button className="jd-cta" onClick={onMatchJob} disabled={!online}>
+        <span className="suggestion-icon">
+          <TargetIcon size={16} />
+        </span>
+        <span>
+          <span className="jd-cta-title">Hiring for a role?</span>
+          <span className="jd-cta-sub">Paste the job description and see how {firstName || "the candidate"} matches.</span>
+        </span>
+      </button>
 
       <div className="suggestions-title">Try asking</div>
       <div className="suggestion-grid">
