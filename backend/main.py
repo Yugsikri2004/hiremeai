@@ -405,21 +405,27 @@ Return ONLY valid JSON matching this schema:
 @app.post("/match")
 def match_job(request : MatchRequest, http_request : Request):
     check_rate_limit(get_client_ip(http_request))   #chat wali limit hi -> dono mila ke 15/min, quota safe
-    try:
-        response = client.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": build_match_prompt()},
-                {"role": "user", "content": f"JOB DESCRIPTION:\n{request.job_description}"},
-            ],
-            response_format={"type": "json_object"},
-            temperature=0,   #same JD pe har baar same score aana chahiye
-            max_tokens=1000,
-        )
-        return MatchResult.model_validate_json(response.choices[0].message.content)
-    except Exception as e:
-        print("Match error:", e)   #asli error terminal mai, user ko simple message
-        raise HTTPException(status_code=502, detail="Couldn't analyse this job description right now. Please try again in a minute.")
+    messages = [
+        {"role": "system", "content": build_match_prompt()},
+        {"role": "user", "content": f"JOB DESCRIPTION:\n{request.job_description}"},
+    ]
+    #2 try: kabhi kabhi LLM adhoora/galat JSON deta hai -> ek baar dobara puchh lo, phir bhi fail toh error
+    for attempt in range(2):
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=messages,
+                response_format={"type": "json_object"},
+                temperature=0,   #same JD pe har baar same score aana chahiye
+                #gpt-oss pehle "sochta" hai, aur wo sochna bhi max_tokens mai ginta hai
+                #1000 pe lamba JD aate hi JSON beech mai kat jaata tha -> 502. Isliye 3000 + kam sochna (low)
+                max_tokens=3000,
+                reasoning_effort="low",
+            )
+            return MatchResult.model_validate_json(response.choices[0].message.content)
+        except Exception as e:
+            print(f"Match error (attempt {attempt + 1}):", e)   #asli error terminal (Render logs) mai, user ko simple message
+    raise HTTPException(status_code=502, detail="Couldn't analyse this job description right now. Please try again in a minute.")
 
 
 

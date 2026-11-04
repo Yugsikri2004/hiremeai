@@ -42,7 +42,9 @@ class FakeGroq:
         if kwargs.get("stream"):
             return iter(make_chunk(t) for t in self.reply)
         # stream nahi -> poora answer ek saath: response.choices[0].message.content
-        return SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=self.json_reply))])
+        # json_reply list ho toh har call pe agla answer (retry test karne ke liye)
+        reply = self.json_reply.pop(0) if isinstance(self.json_reply, list) else self.json_reply
+        return SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=reply))])
 
 
 @pytest.fixture

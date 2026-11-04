@@ -53,6 +53,22 @@ def test_match_bad_llm_json_gives_502(client, fake_llm):
     assert "try again" in res.json()["detail"]
 
 
+def test_match_retries_once_when_llm_json_is_cut(client, fake_llm):
+    # pehla answer adhoora JSON (jaise max_tokens pe kat gaya), doosra sahi -> user ko result milna chahiye
+    fake_llm.json_reply = ['{"match_score": 80, "verd', json.dumps(GOOD_RESULT)]
+    res = client.post("/match", json={"job_description": JD})
+    assert res.status_code == 200
+    assert res.json() == GOOD_RESULT
+    assert len(fake_llm.calls) == 2
+
+
+def test_match_allows_room_for_model_reasoning(client, fake_llm):
+    # gpt-oss ka "sochna" bhi max_tokens mai ginta hai -> 1000 pe lambe JD ka JSON kat jaata tha
+    fake_llm.json_reply = json.dumps(GOOD_RESULT)
+    client.post("/match", json={"job_description": JD})
+    assert fake_llm.calls[0]["max_tokens"] >= 3000
+
+
 def test_match_score_out_of_range_gives_502(client, fake_llm):
     fake_llm.json_reply = json.dumps({**GOOD_RESULT, "match_score": 150})
     assert client.post("/match", json={"job_description": JD}).status_code == 502
